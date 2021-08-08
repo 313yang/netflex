@@ -5,7 +5,7 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import Home from "./pages/Home";
+import Movie from "./pages/Movie";
 import Search from "./pages/Search";
 import TV from "./pages/TV";
 import Detail from "./pages/Detail";
@@ -18,7 +18,7 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path="/" exact component={Home} />
+          <Route path="/" exact component={Movie} />
           <Route path="/search" component={Search} />
           <Route path="/tv" component={TV} />
           <Route path="/:id" component={Detail} />
