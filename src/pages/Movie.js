@@ -12,27 +12,26 @@ const Movie = () => {
   const [loading, setLoading] = useState(true);
 
   const getMovies = async () => {
-    const {
-      data: { results: nowPlaying },
-    } = await moviesApi.nowPlaying();
-    const {
-      data: { results: popular },
-    } = await moviesApi.popular();
-    const {
-      data: { results: upcoming },
-    } = await moviesApi.upcoming();
-    setMovies({ upcoming, nowPlaying, popular });
-  };
-
-  useEffect(() => {
     try {
-      getMovies();
+      const {
+        data: { results: nowPlaying },
+      } = await moviesApi.nowPlaying();
+      const {
+        data: { results: popular },
+      } = await moviesApi.popular();
+      const {
+        data: { results: upcoming },
+      } = await moviesApi.upcoming();
+      setMovies({ upcoming, nowPlaying, popular });
     } catch (error) {
       setError("Can't find Movie.");
     } finally {
       setLoading(false);
     }
-  }, [movies]);
+  };
+  useEffect(() => {
+    getMovies();
+  }, []);
   console.log(movies);
   return (
     <MovieContent

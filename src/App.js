@@ -21,7 +21,8 @@ function App() {
           <Route path="/" exact component={Movie} />
           <Route path="/search" component={Search} />
           <Route path="/tv" component={TV} />
-          <Route path="/:id" component={Detail} />
+          <Route path="/movie/:id" component={Detail} />
+          <Route path="/tv/:id" component={Detail} />
           <Redirect from="*" to="/" />
         </Switch>
       </Router>
