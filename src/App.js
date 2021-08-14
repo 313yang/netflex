@@ -20,7 +20,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Movie} />
           <Route path="/search" component={Search} />
-          <Route path="/tv" component={TV} />
+          <Route path="/tv" exact component={TV} />
           <Route path="/movie/:id" component={Detail} />
           <Route path="/tv/:id" component={Detail} />
           <Redirect from="*" to="/" />

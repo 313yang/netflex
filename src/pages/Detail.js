@@ -22,7 +22,7 @@ const Detail = (props) => {
     // setState({ ...state, isMovie: true });
     const isNumberId = Number(id);
     setState({ ...state, id });
-    console.log(id, isNumberId, pathname);
+    // console.log(id, isNumberId, pathname);
     if (isNaN(isNumberId)) {
       return push("/");
     }
@@ -43,7 +43,7 @@ const Detail = (props) => {
   };
   useEffect(() => {
     getParams();
-  }, []);
+  }, [pathname]);
   console.log(state.result);
   return <h1>Detail</h1>;
 };
