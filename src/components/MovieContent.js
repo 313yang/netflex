@@ -4,7 +4,7 @@ import Loader from "./Loader";
 import Section from "./Section";
 
 const Container = styled.div`
-  padding: 0px 10px;
+  padding: 0px 20px;
 `;
 
 const MovieContent = ({ nowPlaying, upcoming, popular, error, loading }) =>
