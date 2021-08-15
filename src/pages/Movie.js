@@ -24,7 +24,6 @@ const Movie = () => {
       } = await moviesApi.upcoming();
       setMovies({ upcoming, nowPlaying, popular });
     } catch (error) {
-      setError("Can't find Movie.");
     } finally {
       setLoading(false);
     }

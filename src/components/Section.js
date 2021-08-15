@@ -1,16 +1,18 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-bottom: 30px;
+`;
 
 const Title = styled.h1`
   font-size: 20px;
   font-weight: bold;
-  margin: 30px 0;
+  margin: 10px 0;
 `;
 
 const Grid = styled.div`
-  margin-top: 25px;
+  margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 125px);
   grid-gap: 25px;

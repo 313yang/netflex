@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "./Loader";
 import Section from "./Section";
+import Message from "./Message";
+import Poster from "./Poster";
 
 const Container = styled.div`
   padding: 20px;
@@ -47,18 +49,37 @@ const SearchContent = ({
           {movieResults?.length > 0 && (
             <Section title="Movie Result">
               {movieResults.map((movie) => (
-                <span key={movie.id}>{movie.title}</span>
+                <Poster
+                  key={movie.id}
+                  title={movie.original_title}
+                  imgUrl={movie.poster_path}
+                  isMovie={true}
+                  rating={movie.vote_average}
+                  year={movie.release_date?.substring(0, 4)}
+                  id={movie.id}
+                />
               ))}
             </Section>
           )}
           {tvResults?.length > 0 && (
-            <Section title="Movie Result">
+            <Section title="TV Show Result">
               {tvResults.map((show) => (
-                <span key={show.id}>{show.name}</span>
+                <Poster
+                  key={show.id}
+                  title={show.original_name}
+                  imgUrl={show.poster_path}
+                  rating={show.vote_average}
+                  year={show.first_air_date?.substring(0, 4)}
+                  id={show.id}
+                />
               ))}
             </Section>
           )}
         </>
+      )}
+      {error && <Message color="#e74c3c" text={error} />}
+      {tvResults?.length === 0 && movieResults?.length === 0 && (
+        <Message text="Nothing found" color="#95a5a6" />
       )}
     </Container>
   );
