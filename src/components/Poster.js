@@ -1,12 +1,12 @@
 import Proptypes from "prop-types";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import noPoster from "../assets/no-poster.png";
 
 const Container = styled.div``;
 
 const Image = styled.div`
-  background: center / cover
-    url(${(props) => `https://image.tmdb.org/t/p/w300/${props.bgUrl}`});
+  background: center / cover url(${(props) => props.bgUrl});
   height: 200px;
   transition: opacity 0.2s linear;
 `;
@@ -50,7 +50,11 @@ const Poster = ({ imgUrl, title, rating, year, id, isMovie = false }) => (
   <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
     <Container>
       <ImgContainer>
-        <Image bgUrl={imgUrl} />
+        <Image
+          bgUrl={
+            imgUrl ? `https://image.tmdb.org/t/p/w300/${imgUrl}` : noPoster
+          }
+        />
         <Rating>
           <span role="img" aria-label="rating">
             ⭐
