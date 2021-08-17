@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { moviesApi, tvApi } from "../api";
+import DetailContent from "../components/DetailContent";
 
 const Detail = (props) => {
   const {
@@ -45,6 +46,8 @@ const Detail = (props) => {
     getParams();
   }, [pathname]);
   console.log(state.result);
-  return <h1>Detail</h1>;
+  return (
+    <DetailContent result={state.result} loading={loading} error={error} />
+  );
 };
 export default Detail;

@@ -6,6 +6,7 @@ import Message from "./Message";
 import Poster from "./Poster";
 
 const Container = styled.div`
+  margin-top: 80px;
   padding: 20px;
 `;
 

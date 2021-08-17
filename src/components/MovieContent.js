@@ -6,6 +6,7 @@ import Section from "./Section";
 import Poster from "./Poster";
 
 const Container = styled.div`
+  margin-top: 80px;
   padding: 0px 20px;
 `;
 
