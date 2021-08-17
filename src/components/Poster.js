@@ -33,7 +33,6 @@ const ImgContainer = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 18px;
   margin: 8px 0;
   width: 100%;
   text-overflow: ellipsis;

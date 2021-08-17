@@ -16,8 +16,8 @@ const Backdrop = styled.div`
   width: 100%;
   height: 100%;
   background: center / cover url(${(props) => props.bgimg});
-  filter: blur(3px);
-  opacity: 0.8;
+  filter: blur(6px);
+  opacity: 0.3;
 `;
 
 const Content = styled.div`
@@ -40,6 +40,40 @@ const Cover = styled.div`
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 `;
+const Data = styled.div`
+  width: 60%;
+  margin-left: 40px;
+  margin-top: 0px;
+  padding: 50px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+`;
+const Title = styled.h2`
+  font-family: "Bebas Neue", cursive;
+  font-size: 50px;
+  font-style: oblique;
+  letter-spacing: 2px;
+  text-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  margin: 0px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #ff2727;
+`;
+const ItemContainer = styled.div`
+  display: flex;
+  align-self: center;
+  margin: 20px 0 40px;
+  font-size: 18px;
+`;
+const Divider = styled.p`
+  margin: 0 20px;
+`;
+const Item = styled.p`
+  font-family: "Bebas Neue", cursive;
+`;
+const OverView = styled.p`
+  width: 90%;
+  line-height: 1.2;
+`;
 
 const DetailContent = ({ result, loading, error }) =>
   loading ? (
@@ -57,6 +91,36 @@ const DetailContent = ({ result, loading, error }) =>
               : { noPoster }
           }
         />
+        <Data>
+          <Title>
+            {result?.original_title
+              ? result?.original_title
+              : result?.original_name}
+          </Title>
+          <ItemContainer>
+            <Item>
+              {result?.release_date
+                ? result?.release_date.substring(0, 4)
+                : result?.first_air_date.substring(0, 4)}
+            </Item>
+            <Divider>•</Divider>
+            <Item>
+              {result?.runtime ? result?.runtime : result?.episode_run_time}
+              min
+            </Item>
+            <Divider>•</Divider>
+            <Item>
+              {result?.genres &&
+                result.genres.map((genre, index) =>
+                  index === result.genres.length - 1
+                    ? `🍿 ${genre.name} `
+                    : ` 🍿 ${genre.name} `
+                )}
+              min
+            </Item>
+          </ItemContainer>
+          <OverView>{result?.overview}</OverView>
+        </Data>
       </Content>
     </Container>
   );

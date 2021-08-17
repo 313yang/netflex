@@ -11,10 +11,13 @@ a{
         box-sizing:border-box;
     }
     body{
-        font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        font-size:16px;
+        font-family: 'Apple SD Gothic Neo','Noto Sans KR',arial,sans-serif;
         background-color:rgba(20,20,20,1);
         color:white;
+        
+        &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
     }
 `;
 

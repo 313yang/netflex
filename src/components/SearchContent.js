@@ -6,19 +6,22 @@ import Message from "./Message";
 import Poster from "./Poster";
 
 const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 80px;
   padding: 20px;
 `;
 
 const Form = styled.form`
   margin-bottom: 50px;
-  width: 100%;
+  width: 80%;
 `;
 
 const Input = styled.input`
   all: unset;
+  width: 100%;
   font-size: 26px;
-  width: 20%;
   :focus {
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.4);
