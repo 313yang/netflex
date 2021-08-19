@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "./Loader";
 import noPoster from "../assets/no-poster.png";
+import Helmet from "react-helmet";
 
 const Container = styled.div`
   height: 95vh;
@@ -49,7 +50,7 @@ const Data = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 const Title = styled.h2`
-  font-family: "Bebas Neue", cursive;
+  font-family: "Bebas Neue", "Noto Sans KR";
   font-size: 50px;
   font-style: oblique;
   letter-spacing: 2px;
@@ -68,7 +69,7 @@ const Divider = styled.p`
   margin: 0 20px;
 `;
 const Item = styled.p`
-  font-family: "Bebas Neue", cursive;
+  font-family: "Bebas Neue", "Noto Sans KR";
 `;
 const OverView = styled.p`
   width: 90%;
@@ -80,6 +81,15 @@ const DetailContent = ({ result, loading, error }) =>
     <Loader />
   ) : (
     <Container>
+      <Helmet>
+        <title>
+          {`${
+            result && result?.original_title
+              ? result?.original_title
+              : result?.original_name
+          } | NETFLEX`}
+        </title>
+      </Helmet>
       <Backdrop
         bgimg={`https://image.tmdb.org/t/p/original${result?.backdrop_path}`}
       />

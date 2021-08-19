@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Helmet from "react-helmet";
 import Loader from "./Loader";
 import Section from "./Section";
 import Message from "./Message";
@@ -39,6 +40,9 @@ const SearchContent = ({
 }) => {
   return (
     <Container>
+      <Helmet>
+        <title>SEARCH | NETFLEX</title>
+      </Helmet>
       <Form onSubmit={handleSubmit}>
         <Input
           placeholder="Search Movie and TV Shows"

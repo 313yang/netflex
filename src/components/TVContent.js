@@ -4,62 +4,69 @@ import Loader from "./Loader";
 import Section from "./Section";
 import Message from "./Message";
 import Poster from "./Poster";
+import { Helmet } from "react-helmet";
 
 const Container = styled.div`
   margin-top: 80px;
   padding: 0px 20px;
 `;
 
-const TVContent = ({ topRated, popular, airingToday, error, isLoading }) =>
-  isLoading ? (
-    <Loader />
-  ) : (
-    <Container>
-      {topRated?.length > 0 && (
-        <Section title="Top Rated Shows">
-          {topRated.map((show) => (
-            <Poster
-              key={show.id}
-              title={show.original_name}
-              imgUrl={show.poster_path}
-              rating={show.vote_average}
-              year={show.first_air_date?.substring(0, 4)}
-              id={show.id}
-            />
-          ))}
-        </Section>
-      )}
-      {popular?.length > 0 && (
-        <Section title="Popular Shows">
-          {popular.map((show) => (
-            <Poster
-              key={show.id}
-              title={show.original_name}
-              imgUrl={show.poster_path}
-              rating={show.vote_average}
-              year={show.first_air_date?.substring(0, 4)}
-              id={show.id}
-            />
-          ))}
-        </Section>
-      )}
-      {airingToday?.length > 0 && (
-        <Section title="Airing Today">
-          {airingToday.map((show) => (
-            <Poster
-              key={show.id}
-              title={show.original_name}
-              imgUrl={show.poster_path}
-              rating={show.vote_average}
-              year={show.first_air_date?.substring(0, 4)}
-              id={show.id}
-            />
-          ))}
-        </Section>
-      )}
-      {error && <Message color="#e74c3c" text={error} />}
-    </Container>
-  );
+const TVContent = ({ topRated, popular, airingToday, error, isLoading }) => (
+  <>
+    <Helmet>
+      <title>TV | NETFLEX</title>
+    </Helmet>
+    {isLoading ? (
+      <Loader />
+    ) : (
+      <Container>
+        {topRated?.length > 0 && (
+          <Section title="Top Rated Shows">
+            {topRated.map((show) => (
+              <Poster
+                key={show.id}
+                title={show.original_name}
+                imgUrl={show.poster_path}
+                rating={show.vote_average}
+                year={show.first_air_date?.substring(0, 4)}
+                id={show.id}
+              />
+            ))}
+          </Section>
+        )}
+        {popular?.length > 0 && (
+          <Section title="Popular Shows">
+            {popular.map((show) => (
+              <Poster
+                key={show.id}
+                title={show.original_name}
+                imgUrl={show.poster_path}
+                rating={show.vote_average}
+                year={show.first_air_date?.substring(0, 4)}
+                id={show.id}
+              />
+            ))}
+          </Section>
+        )}
+        {airingToday?.length > 0 && (
+          <Section title="Airing Today">
+            {airingToday.map((show) => (
+              <Poster
+                key={show.id}
+                title={show.original_name}
+                imgUrl={show.poster_path}
+                rating={show.vote_average}
+                year={show.first_air_date?.substring(0, 4)}
+                id={show.id}
+              />
+            ))}
+          </Section>
+        )}
+        {error && <Message color="#e74c3c" text={error} />}
+      </Container>
+    )}
+  </>
+);
 
 TVContent.propTypes = {
   topRated: PropTypes.array,
