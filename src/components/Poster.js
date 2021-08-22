@@ -1,20 +1,23 @@
-import Proptypes from "prop-types";
+import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import noPoster from "../assets/no-poster.png";
+import Proptypes from "prop-types";
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin: 0 10px;
+`;
 
 const Image = styled.div`
   background: center / cover url(${(props) => props.bgUrl});
-  height: 200px;
+  height: 400px;
   transition: opacity 0.2s linear;
 `;
 
 const Rating = styled.span`
   position: absolute;
-  top: 170px;
-  left: 5px;
+  top: 200px;
+  left: 90px;
   opacity: 0;
   transition: opacity 0.2s linear;
 `;
@@ -58,7 +61,7 @@ const Poster = ({ imgUrl, title, rating, year, id, isMovie = false }) => (
           <span role="img" aria-label="rating">
             ⭐
           </span>{" "}
-          {rating}/10
+          {rating} / 10
         </Rating>
         <Title>{title}</Title>
         <Year>{year}</Year>

@@ -2,7 +2,9 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "./Loader";
 import noPoster from "../assets/no-poster.png";
+import imdbLogo from "../assets/IMDB_Logo_2016.svg";
 import Helmet from "react-helmet";
+import Tab from "./Tab";
 
 const Container = styled.div`
   height: 95vh;
@@ -63,13 +65,17 @@ const ItemContainer = styled.div`
   display: flex;
   align-self: center;
   margin: 20px 0 40px;
-  font-size: 18px;
+  font-size: 20px;
 `;
 const Divider = styled.p`
-  margin: 0 20px;
+  margin: 0 10px;
+  font-family: "Bebas Neue", "Noto Sans KR";
 `;
 const Item = styled.p`
   font-family: "Bebas Neue", "Noto Sans KR";
+  img {
+    width: 38px;
+  }
 `;
 const OverView = styled.p`
   width: 90%;
@@ -126,10 +132,24 @@ const DetailContent = ({ result, loading, error }) =>
                     ? `🍿 ${genre.name} `
                     : ` 🍿 ${genre.name} `
                 )}
-              min
+            </Item>
+            <Divider>•</Divider>
+            <Item>
+              {result?.imdb_id ? (
+                <a
+                  href={`https://www.imdb.com/title/${result.imdb_id}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img src={imdbLogo} alt="imdb-logo" />
+                </a>
+              ) : (
+                ""
+              )}
             </Item>
           </ItemContainer>
           <OverView>{result?.overview}</OverView>
+          <Tab />
         </Data>
       </Content>
     </Container>
