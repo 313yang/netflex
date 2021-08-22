@@ -4,7 +4,6 @@ import Helmet from "react-helmet";
 import Slider from "react-slick";
 import Message from "./Message";
 import Loader from "./Loader";
-import Section from "./Section";
 import Poster from "./Poster";
 
 const Container = styled.div`

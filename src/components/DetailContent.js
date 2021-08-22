@@ -49,7 +49,8 @@ const Data = styled.div`
   margin-top: 0px;
   padding: 50px;
   border-radius: 5px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 `;
 const Title = styled.h2`
   font-family: "Bebas Neue", "Noto Sans KR";
@@ -149,7 +150,7 @@ const DetailContent = ({ result, loading, error }) =>
             </Item>
           </ItemContainer>
           <OverView>{result?.overview}</OverView>
-          <Tab />
+          <Tab result={result} />
         </Data>
       </Content>
     </Container>
