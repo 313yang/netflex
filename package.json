@@ -27,6 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://quizzical-lamarr-aa48d3.netlify.app/",
   "eslintConfig": {
     "extends": [
       "react-app",
