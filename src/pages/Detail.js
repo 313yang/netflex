@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useEffect, useState } from "react";
 import { moviesApi, tvApi } from "../api";
 import DetailContent from "../components/DetailContent";
@@ -23,6 +24,7 @@ const Detail = (props) => {
     // setState({ ...state, isMovie: true });
     const isNumberId = Number(id);
     setState({ ...state, id });
+    // console.log(id, isNumberId, pathname);
     if (isNaN(isNumberId)) {
       return push("/");
     }
@@ -43,7 +45,6 @@ const Detail = (props) => {
   };
   useEffect(() => {
     getParams();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
   return (
     <DetailContent result={state.result} loading={loading} error={error} />
