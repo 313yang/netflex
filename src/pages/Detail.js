@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { moviesApi, tvApi } from "../api";
 import DetailContent from "../components/DetailContent";
 
@@ -19,7 +19,7 @@ const Detail = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const getParams = async () => {
+  const getParams = useCallback(async () => {
     // setState({ ...state, isMovie: true });
     const isNumberId = Number(id);
     setState({ ...state, id });
@@ -41,10 +41,10 @@ const Detail = (props) => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id, push, state]);
   useEffect(() => {
     getParams();
-  }, [pathname]);
+  }, [getParams, pathname]);
   return (
     <DetailContent result={state.result} loading={loading} error={error} />
   );

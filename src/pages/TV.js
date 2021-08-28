@@ -34,7 +34,6 @@ const TV = () => {
   useEffect(() => {
     getShows();
   }, []);
-  console.log(shows);
 
   return (
     <TVContent

@@ -32,7 +32,6 @@ const Movie = () => {
   useEffect(() => {
     getMovies();
   }, []);
-  console.log(movies);
   return (
     <MovieContent
       nowPlaying={movies.nowPlaying}

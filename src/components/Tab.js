@@ -99,7 +99,6 @@ const Tab = ({ result, location }) => {
   const [currentTab, setCurrentTab] = useState("YouTube");
   const { pathname } = location;
   const handleTarget = (e) => setCurrentTab(e.target.innerText);
-  console.log(pathname);
   return (
     <Container>
       <div>
