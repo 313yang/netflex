@@ -58,6 +58,7 @@ const SearchContent = ({
             <Section title="Movie Result">
               {movieResults.map((movie) => (
                 <Poster
+                  search={true}
                   key={movie.id}
                   title={movie.original_title}
                   imgUrl={movie.poster_path}
@@ -73,6 +74,7 @@ const SearchContent = ({
             <Section title="TV Show Result">
               {tvResults.map((show) => (
                 <Poster
+                  search={true}
                   key={show.id}
                   title={show.original_name}
                   imgUrl={show.poster_path}

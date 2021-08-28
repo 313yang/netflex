@@ -10,14 +10,14 @@ const Container = styled.div`
 
 const Image = styled.div`
   background: center / cover url(${(props) => props.bgUrl});
-  height: 400px;
+  height: ${(props) => (props.search ? "200px" : "400px")};
   transition: opacity 0.2s linear;
 `;
 
 const Rating = styled.span`
   position: absolute;
-  top: 200px;
-  left: 90px;
+  top: ${(props) => (props.search ? "170px" : "200px")};
+  left: ${(props) => (props.search ? "5px" : "90px")};
   opacity: 0;
   transition: opacity 0.2s linear;
 `;
@@ -48,21 +48,48 @@ const Year = styled.h4`
   margin-bottom: 3px;
 `;
 
-const Poster = ({ imgUrl, title, rating, year, id, isMovie = false }) => (
+const Poster = ({
+  imgUrl,
+  title,
+  rating,
+  year,
+  id,
+  isMovie = false,
+  search,
+}) => (
   <Link to={isMovie ? `/movie/${id}` : `/tv/${id}`}>
     <Container>
       <ImgContainer>
-        <Image
-          bgUrl={
-            imgUrl ? `https://image.tmdb.org/t/p/w300/${imgUrl}` : noPoster
-          }
-        />
-        <Rating>
-          <span role="img" aria-label="rating">
-            ⭐
-          </span>{" "}
-          {rating} / 10
-        </Rating>
+        {search ? (
+          <>
+            <Image
+              search
+              bgUrl={
+                imgUrl ? `https://image.tmdb.org/t/p/w300/${imgUrl}` : noPoster
+              }
+            />
+            <Rating search>
+              <span role="img" aria-label="rating">
+                ⭐
+              </span>{" "}
+              {rating} / 10
+            </Rating>
+          </>
+        ) : (
+          <>
+            <Image
+              bgUrl={
+                imgUrl ? `https://image.tmdb.org/t/p/w300/${imgUrl}` : noPoster
+              }
+            />
+            <Rating>
+              <span role="img" aria-label="rating">
+                ⭐
+              </span>{" "}
+              {rating} / 10
+            </Rating>
+          </>
+        )}
         <Title>{title}</Title>
         <Year>{year}</Year>
       </ImgContainer>
