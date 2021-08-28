@@ -19,11 +19,10 @@ const Detail = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const getParams = useCallback(async () => {
+  const getParams = async () => {
     // setState({ ...state, isMovie: true });
     const isNumberId = Number(id);
     setState({ ...state, id });
-    // console.log(id, isNumberId, pathname);
     if (isNaN(isNumberId)) {
       return push("/");
     }
@@ -41,10 +40,11 @@ const Detail = (props) => {
     } finally {
       setLoading(false);
     }
-  }, [id, push, state]);
+  };
   useEffect(() => {
     getParams();
-  }, [getParams, pathname]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
   return (
     <DetailContent result={state.result} loading={loading} error={error} />
   );
