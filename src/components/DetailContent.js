@@ -7,14 +7,14 @@ import Helmet from "react-helmet";
 import Tab from "./Tab";
 
 const Container = styled.div`
-  height: 95vh;
+  height: 93vh;
   width: 100%;
   position: relative;
   padding: 50px 10%;
 `;
 const Backdrop = styled.div`
   position: absolute;
-  top: 5vh;
+  top: 7vh;
   left: 0;
   width: 100%;
   height: 100%;
@@ -149,7 +149,11 @@ const DetailContent = ({ result, loading, error }) =>
               )}
             </Item>
           </ItemContainer>
-          <OverView>{result?.overview}</OverView>
+          <OverView>
+            {result?.overview.length > 300
+              ? `${result?.overview.substring(0, 300)}...`
+              : `${result?.overview}`}
+          </OverView>
           <Tab result={result} />
         </Data>
       </Content>

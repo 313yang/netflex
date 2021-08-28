@@ -35,7 +35,7 @@ const MovieContent = ({ nowPlaying, upcoming, popular, error, loading }) => {
           style={{
             color: "#fff",
             fontSize: "30px",
-            opacity: "0.6",
+            opacity: "0.25",
             transition: "opacity 0.2s ease",
           }}
         />
@@ -55,7 +55,7 @@ const MovieContent = ({ nowPlaying, upcoming, popular, error, loading }) => {
           style={{
             color: "#fff",
             fontSize: "30px",
-            opacity: "0.6",
+            opacity: "0.25",
             transition: "opacity 0.2s ease",
           }}
         />

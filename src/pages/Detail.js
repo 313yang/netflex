@@ -45,7 +45,6 @@ const Detail = (props) => {
   useEffect(() => {
     getParams();
   }, [pathname]);
-  console.log(state.result);
   return (
     <DetailContent result={state.result} loading={loading} error={error} />
   );

@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "./Loader";
-import Section from "./Section";
 import Message from "./Message";
 import Poster from "./Poster";
 import { Helmet } from "react-helmet";

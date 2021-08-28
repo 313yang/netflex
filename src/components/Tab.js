@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import noPoster from "../assets/no-poster.png";
 
@@ -94,9 +95,11 @@ const Season = styled.div`
     }
   }
 `;
-const Tab = ({ result }) => {
+const Tab = ({ result, location }) => {
   const [currentTab, setCurrentTab] = useState("YouTube");
+  const { pathname } = location;
   const handleTarget = (e) => setCurrentTab(e.target.innerText);
+  console.log(pathname);
   return (
     <Container>
       <div>
@@ -118,10 +121,12 @@ const Tab = ({ result }) => {
             <button onClick={handleTarget}>Production</button>
           </TabStyle>
         )}
-        {currentTab === "Seasons" && result?.seasons ? (
-          <TabStyle active>
-            <button onClick={handleTarget}>Seasons</button>
-          </TabStyle>
+        {pathname.includes("/movie/") ? (
+          currentTab === "Seasons" && (
+            <TabStyle active>
+              <button onClick={handleTarget}>Seasons</button>
+            </TabStyle>
+          )
         ) : (
           <TabStyle>
             <button onClick={handleTarget}>Seasons</button>
@@ -131,6 +136,7 @@ const Tab = ({ result }) => {
       <Contents>
         {currentTab === "YouTube" && (
           <div>
+            {result?.videos.results.length <= 0 && <span>No result</span>}
             {result?.videos.results.map((video) => (
               <iframe
                 title={video.key}
@@ -141,6 +147,7 @@ const Tab = ({ result }) => {
         )}
         {currentTab === "Production" && (
           <ProductionLogo>
+            {result?.production_companies.length <= 0 && <span>No result</span>}
             {result?.production_companies.map((prod) => (
               <span key={prod.name}>
                 <img
@@ -156,7 +163,7 @@ const Tab = ({ result }) => {
             ))}
           </ProductionLogo>
         )}
-        {currentTab === "Seasons" && result?.seasons && (
+        {currentTab === "Seasons" && (
           <Season>
             {result?.seasons.map((season) => (
               <div key={season.id}>
@@ -177,4 +184,4 @@ const Tab = ({ result }) => {
     </Container>
   );
 };
-export default Tab;
+export default withRouter(Tab);
